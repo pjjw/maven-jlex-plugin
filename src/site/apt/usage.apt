@@ -1,0 +1,51 @@
+ -----
+maven-jlex-plugin
+ -----
+Kevin Conaway
+ -----
+23 February 2007
+ -----
+
+Usage
+
+  The Jlex plugin generates Java Lexical Analyzers using the JLex Java Lexical Anaylzer Generator.
+
+  To run the plugin, include the following in your POM:
+
++-----+
+<project>
+  ...
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jlex-plugin</artifactId>
+        <configuration>
+    	  <files>
+    	    <filePair>
+    	      <inputFile>input.lex</inputFile>
+    	      <outputFile>${project.build.sourceDirectory}/org/myapp/Lexer.java</outputFile>
+    	    </filePair>
+    	  </files>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  ...
+</project>
++-----+
+
+
+Configuration
+
+  The plugin accepts as many <<<\<filePair\>>>> nodes as you wish to run.  The <<<\<inputFile\>>>> should contain the lex grammer and 
+  the <<<\<outputFile\>>>> should point to where the analyzer should be generated
+
