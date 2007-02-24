@@ -57,7 +57,7 @@ public class JLexMojo extends AbstractMojo {
     		File inFile = pair.getInputFile();
     		File outFile = pair.getOutputFile();
     		
-    		if (inFile == null || inFile.exists()) {
+    		if (inFile == null || !inFile.exists()) {
     			throw new MojoExecutionException("Input file is empty or doesn't exist");
     		}
     		
