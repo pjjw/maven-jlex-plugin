@@ -18,7 +18,7 @@ Usage
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
+        <groupId>net.sourceforge.mavenjlex</groupId>
         <artifactId>maven-jlex-plugin</artifactId>
         <configuration>
     	  <files>
