@@ -8,9 +8,9 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>maven-jlex-plugin</artifactId>
-	<groupId>net.sourceforge.maven-jlex</groupId>
+	<groupId>org.shortbus</groupId>
 	<packaging>maven-plugin</packaging>
-	<version>1.0</version>
+	<version>1.1</version>
 	<inceptionYear>2007</inceptionYear>
 	<prerequisites>
 		<maven>2.0</maven>
@@ -20,7 +20,7 @@
 		The Maven Jlex Plugin is a plugin that runs the Jlex Java
 		Lexical Analyzer Generator for the specified project.
 	</description>
-	<url>http://maven-jlex.sourceforge.net/</url>
+	<url>http://github.com/pjjw/maven-jlex-plugin</url>
 	<licenses>
 		<license>
 			<name>Apache 2</name>
@@ -42,19 +42,32 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 	<scm>
 		<connection>
-			scm:svn:https://maven-jlex.svn.sourceforge.net/svnroot/maven-jlex
+			scm:git:git://github.com/pjjw/maven-jlex-plugin.git
 		</connection>
 		<developerConnection>
-			scm:svn:https://maven-jlex.svn.sourceforge.net/svnroot/maven-jlex
+			scm:git:git@github.com:pjjw/maven-jlex-plugin.git
 		</developerConnection>
 		<tag>HEAD</tag>
 		<url>
-			http://maven-jlex.svn.sourceforge.net/viewvc/maven-jlex/
+			http://github.com/pjjw/maven-jlex-plugin/tree/master
 		</url>
 	</scm>
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 	<developers>
 		<developer>
 			<id>kevinconaway</id>
@@ -64,6 +77,15 @@
 				<role>developer</role>
 			</roles>
 			<timezone>-5</timezone>
+		</developer>
+		<developer>
+		  <id>pjjw</id>
+		  <name>Peter Woodman</name>
+		  <email>peter@shortbus.org</email>
+		  <roles>
+		    <role>sophist</role>
+		  </roles>
+		  <timezone>-8</timezone>
 		</developer>
 	</developers>
 </project>

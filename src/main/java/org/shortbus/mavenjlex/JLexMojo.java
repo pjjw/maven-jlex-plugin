@@ -1,4 +1,4 @@
-package net.sourceforge.mavenjlex;
+package org.shortbus.mavenjlex;
 
 /*
  * Copyright 2001-2005 The Apache Software Foundation.
@@ -65,19 +65,26 @@ public class JLexMojo extends AbstractMojo {
     			throw new MojoExecutionException("Output file is empty");
     		}
     		
-    		String in = inFile.getPath();
-    		String out = outFile.getPath();
+    		// only run if the input file has changed
+    		if (destFile.exists() &&
+                destFile.lastModified() >= file.lastModified()) {
+              getLog().debug("JLex: Parser file is up-to-date.");
+            }
+            else {
+        		String in = inFile.getPath();
+        		String out = outFile.getPath();
 	            
-	        log.info("jlex input<"+in+"> output<"+out+">");
+    	        log.info("jlex input<"+in+"> output<"+out+">");
 	        
-	        try {
-	        	LexGenerator lg = new LexGenerator(in, out, lexout);
-				lg.generate();
-	        } catch (IOException ex) {
-	        	throw new MojoExecutionException("An error occurred running jlex", ex);
-	        } catch (Error ex) {
-	        	throw new MojoExecutionException("An error occured running jlex", ex);
-	        }
+    	        try {
+    	        	LexGenerator lg = new LexGenerator(in, out, lexout);
+    				lg.generate();
+    	        } catch (IOException ex) {
+    	        	throw new MojoExecutionException("An error occurred running jlex", ex);
+    	        } catch (Error ex) {
+    	        	throw new MojoExecutionException("An error occured running jlex", ex);
+    	        }
+    	    }
     	}
     }
     
